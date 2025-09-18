@@ -24,11 +24,12 @@ const Header: React.FC<HeaderProps> = ({ title, logo }) => {
 
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white shadow-sm'
-    } border-b border-gray-200`}>
+      scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-gradient-to-br from-blue-50 via-white to-indigo-50  backdrop-blur-md'
+    } `}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-4 group cursor-pointer">
+          {/* Logo and Title */}
+          <div className="flex items-center space-x-4 group cursor-pointer md:flex-1">
             <div className="relative">
               <Image
                 width={10}
@@ -46,28 +47,38 @@ const Header: React.FC<HeaderProps> = ({ title, logo }) => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item, index) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium relative group"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden md:flex items-center justify-center flex-1">
+            <div className="flex space-x-8">
+              {navItems.map((item, index) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium relative group"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ))}
+            </div>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Get Started CTA and Mobile Menu Button */}
+          <div className="flex items-center justify-end md:flex-1">
+            {/* Get Started Button - Hidden on mobile, visible on desktop */}
+            <button className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300">
+              Get Started
+            </button>
+            
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 ml-4"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -84,6 +95,10 @@ const Header: React.FC<HeaderProps> = ({ title, logo }) => {
                   {item.name}
                 </a>
               ))}
+              {/* Mobile Get Started Button */}
+              <button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300">
+                Get Started
+              </button>
             </div>
           </div>
         )}

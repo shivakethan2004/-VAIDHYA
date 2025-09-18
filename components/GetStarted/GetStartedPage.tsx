@@ -38,7 +38,7 @@ const GetStartedPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 ">
       <Header
         title="VAIDHYA"
         tagline="Start managing your healthcare interactions easily"
