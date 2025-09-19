@@ -10,6 +10,8 @@ interface UserRole {
   description: string;
   icon: string;
   features: string[];
+  color: string;
+  gradient: string;
 }
 
 interface Feature {

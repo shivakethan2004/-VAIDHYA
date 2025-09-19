@@ -7,7 +7,7 @@ const GetStartedButtons: React.FC<{
   onLogin: () => void;
 }> = ({ selectedRole, onSignUp, onLogin }) => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-transparent">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-8">
           {!selectedRole ? (
